@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TS Molymer: Master Default</title>
+    <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- for ios 7 style, multi-resolution icon of 152x152 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent" />
+    <link rel="apple-touch-icon" href="/images/Logo-Noname.png" />
+    <meta name="apple-mobile-web-app-title" content="Flatkit" />
+    <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" sizes="196x196" href="/images/Logo-Noname.png" />
+
+    <!-- style -->
+    <link rel="stylesheet" href="/animate.css/animate.min.css" type="text/css" />
+    <link rel="stylesheet" href="/glyphicons/glyphicons.css" type="text/css" />
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="/material-design-icons/material-design-icons.css" type="text/css" />
+
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+    <!-- build:css /styles/app.min.css -->
+    <link rel="stylesheet" href="/styles/app.css" type="text/css" />
+    <!-- endbuild -->
+    <link rel="stylesheet" href="/styles/font.css" type="text/css" />
+    <!-- datatables -->
+    <link rel="stylesheet" href="/styles/datatables.min.css" type="text/css" />
+    <!-- select2 -->
+    <link rel="stylesheet" href="/jquery/select2/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="/jquery/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
+    <link rel="stylesheet" href="/jquery/select2-bootstrap-theme/dist/select2-bootstrap.4.css" />
+
+    <link rel="stylesheet" href="/styles/datatables.style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ############ LAYOUT START-->
+
+      <!-- aside -->
+      <div id="aside" class="app-aside modal fade nav-expand">
+        <div class="left navside black dk" layout="column">
+          <div class="navbar no-radius">
+            <!-- brand -->
+            <a class="navbar-brand" href="#">
+              <!-- <div ui-include="'../images/logo.svg'"></div> -->
+              <img src="/images/Logo-Noname.png" alt="." class="" />
+              <span class="hidden-folded inline" style="font-size: 1.1rem">TS MOLYMER</span>
+            </a>
+            <!-- / brand -->
+          </div>
+          <div class="nav-fold">
+            <a href="#">
+              <span class="clear hidden-folded p-x">
+                <span class="block _500 show-user-name">Name</span>
+                <small class="block text-muted" id="userPosition">Administrator</small>
+              </span>
+            </a>
+          </div>
+          <div flex class="hide-scroll">
+            <nav class="scroll nav-stacked nav-active-primary">
+              <ul class="nav" ui-nav>
+                <!-- <li class="nav-header hidden-folded">
+                  <small class="text-muted">Master</small>
+                </li> -->
+
+                <li class="">
+                  <a href="/">
+                    <!-- <span class="nav-icon">
+                      <i class="material-icons">&#xe3fc; </i>
+                    </span> -->
+                    <span class="nav-label">
+                      <b class="label label-sm danger" id="countPJissue">1</b>
+                    </span>
+                    <span class="nav-text">Project</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="/ppc">
+                    <!-- <span class="nav-icon">
+                      <i class="material-icons">&#xe8d2; </i>
+                    </span> -->
+                    <span class="nav-label">
+                      <b class="label label-sm danger" id="countPPCissue">1</b>
+                    </span>
+                    <span class="nav-text">PPC</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="/ecn">
+                    <!-- <span class="nav-icon">
+                      <i class="material-icons">&#xe8d2; </i>
+                    </span> -->
+                    <span class="nav-label">
+                      <b class="label label-sm danger" id="countECNissue">1</b>
+                    </span>
+                    <span class="nav-text">ECN</span>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="/mstDefault">
+                    <!-- <span class="nav-icon">
+                      <i class="material-icons">&#xe8d2; </i>
+                    </span> -->
+                    <!-- <span class="nav-label">
+                      <b class="label label-sm danger" id="countECNissue">1</b>
+                    </span> -->
+                    <span class="nav-text">Master Default</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <nav ui-nav>
+            <ul class="nav">
+              <li><div class="b-b b m-t-sm"></div></li>
+              <li class="no-bg">
+                <a href="/login">
+                  <span class="nav-icon">
+                    <i class="material-icons">&#xe8ac;</i>
+                  </span>
+                  <span class="nav-text">Logout</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- / aside -->
+
+      <!-- content -->
+      <div id="content" class="app-content box-shadow-z1" role="main">
+        <div class="navbar navbar-toggleable-sm flex-row align-items-center hidden-lg-up">
+          <a data-toggle="collapse" data-target="#navbar-1" class="navbar-item mr-3 hidden-md-up">
+            <i class="material-icons">&#xe5d2;</i>
+          </a>
+          <!-- brand -->
+          <a class="navbar-brand" href="#">
+            <!-- <div ui-include="'../images/logo.svg'"></div> -->
+            <img src="/images/Logo-Noname.png" alt="." class="" />
+            <span class="hidden-folded inline" style="font-size: 1.1rem">TS MOLYMER</span>
+          </a>
+          <!-- / brand -->
+          <!-- navbar collapse -->
+          <div class="collapse navbar-collapse" id="navbar-1">
+            <!-- link and dropdown -->
+            <ul class="nav navbar-nav text-{{app.setting.theme.primary}}-hover">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <span class="nav-text">Project</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ppc">
+                  <span class="nav-text">PPC</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ecn">
+                  <span class="nav-text">ECN</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mstDefault">
+                  <span class="nav-text">Master Default</span>
+                </a>
+              </li>
+            </ul>
+            <!-- / link and dropdown -->
+          </div>
+          <!-- / navbar collapse -->
+
+          <!-- nabar right -->
+          <ul class="nav navbar-nav flex-row align-items-center ml-auto">
+            <li class="nav-item dropdown">
+              <span class="text-nowrap show-user-name">Name</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">
+                <span class="hidden-xs-down btn btn-sm rounded btn-outline b-danger text-u-c _600"> Logout </span>
+                <span class="hidden-sm-up">
+                  <i class="material-icons">&#xe8ac;</i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <!-- / navbar right -->
+        </div>
+
+        <!-- modal -->
+
+        <div id="modalPrintHistory" class="modal" data-backdrop="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Print History</h5>
+                <button type="button" class="btn btn-sm danger" data-dismiss="modal" aria-label="Close">
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+              <div class="modal-body text-center p-lg">
+                <div class="table-responsive text-nowrap w-100">
+                  <table id="tableHisPrint" class="display text-dark text-center table-bordered b-t b-b table m-0 w-100">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>
+                          Print<br class="hidden-lg-up" />
+                          By
+                        </th>
+                        <th>
+                          Print<br class="hidden-lg-up" />
+                          Date
+                        </th>
+                        <th>Department</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Name</td>
+                        <td>26 May 2024 10:12:10</td>
+                        <td>QC</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                        <td>Table cell</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- / modal -->
+
+        <div ui-view class="app-body padding" id="view">
+          <div class="row">
+            <div class="col-12">
+              <div class="box">
+                <div class="box-header d-flex align-items-center justify-content-between">
+                  <h2 class="">Master Default</h2>
+                </div>
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-12 col-lg-6">
+                      <div class="form-group row">
+                        <label for="selectDoc" class="col-sm-2 form-control-label">Document</label>
+                        <div class="col-sm-10 input-group">
+                          <select id="selectDoc" class="form-control select2-single">
+                            <option value="PPC">PPC</option>
+                            <option value="ECN">ECN</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-6" id="divPPC">
+                      <div class="form-group row">
+                        <label for="selectPPC" class="col-sm-2 form-control-label">Topic</label>
+                        <div class="col-sm-10 input-group">
+                          <select id="selectPPC" class="form-control select2-single">
+                            <option>Change Item</option>
+                            <option>Reason</option>
+                            <option selected>Risk Analysis & Part Characteristic to be Effected</option>
+                            <option>Qualitity Document Concern</option>
+                            <option value="">Answer / Instruction to plan</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-lg-6 d-none" id="divECN">
+                      <div class="form-group row">
+                        <label for="selectECN" class="col-sm-2 form-control-label">Topic</label>
+                        <div class="col-sm-10 input-group">
+                          <select id="selectECN" class="form-control select2-single">
+                            <option>Document Change</option>
+                            <option>Engineering Process</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="box-divider m-0"></div>
+
+                  <div class="row m-y-md">
+                    <div class="col-12">
+                      <h5 class="m-b-md">Risk Analysis & Part Characteristic to be Effected</h5>
+                      
+                    </div>
+                    
+                    <div class="col-12 col-xl-8">
+                      <div class="form-group row">
+                        <div class="col text-right">
+                          <button type="button" class="btn btn-fw blue-600" id="btnAdd">
+                            <i class="fa fa-plus"></i><span class="hidden-xs-down ml-2">Add</span>
+                          </button>
+                          <button class="btn btn-fw info" type="button" id="btnEdit">
+                            <i class="fa fa-edit"></i><span class="hidden-xs-down ml-2">Edit</span>
+                          </button>
+                          <button class="btn btn-fw danger" type="button" id="btnDel">
+                            <i class="fa fa-trash"></i><span class="hidden-xs-down ml-2">Delete</span>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="table-responsive text-nowrap">
+                        <table id="tableMstDefault" class="display text-center table-bordered b-t b-b table m-0 w-100">
+                          <thead>
+                            <tr>
+                              <th>No</th>
+                              <th>Document</th>
+                              <th>Value</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="selected">
+                              <td>1</td>
+                              <td>None afftected</td>
+                              <td>False</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Shape, Dimension</td>
+                              <td>False</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Fuction</td>
+                              <td>True</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>Appearance and Grain</td>
+                              <td>False</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>Safety and Environment</td>
+                              <td>False</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-xl-4">
+                      
+                      <div class="form-group row">
+                        <label for="selectPPC" class="col-sm-2 form-control-label">Document</label>
+                        <div class="col-sm-10 input-group">
+                          <input type="text" class="form-control" name="" id="" />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="selectPPC" class="col-sm-2 form-control-label">Value</label>
+                        <div class="col-sm-10 input-group">
+                          <input type="text" class="form-control" name="" id="" />
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <button type="button" class="btn btn-fw success" id="btnSave">
+                          <i class="fa fa-save"></i><span class="hidden-xs-down ml-2">Save</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / content -->
+    </div>
+  </body>
+  <!-- build:js scripts/app.html.js -->
+  <!-- jQuery -->
+  <script src="/jquery/jquery/dist/jquery.js"></script>
+  <!-- Bootstrap -->
+  <script src="/jquery/tether/dist/js/tether.min.js"></script>
+  <script src="/jquery/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- print -->
+  <script src="/jquery/html2pdf/html2pdf.bundle.min.js"></script>
+  <script src="/js/print.js"></script>
+  <!-- core -->
+  <script src="/jquery/underscore/underscore-min.js"></script>
+  <script src="/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+  <script src="/jquery/PACE/pace.min.js"></script>
+  <!-- pdf -->
+  <script src="/pdf-lib/download.js"></script>
+  <script src="/pdf-lib/pdf-lib.min.js"></script>
+
+  <!-- datatables -->
+  <script src="/jquery/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="/js/testdatatable.js"></script>
+
+  <!-- select2 -->
+  <script src="/jquery/select2/dist/js/select2.min.js"></script>
+  <script src="/js/testSelect2.js"></script>
+
+  <!-- sweetalert2 -->
+  <script src="/jquery/swalalert2/swalalert2.js"></script>
+
+  <script src="/js/testSwalalert2.js"></script>
+
+
+  <script>
+    const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib;
+    async function modifyPdf() {
+      // Fetch an existing PDF document
+      //const url = 'https://pdf-lib.js.org/with_update_sections.pdf'
+      // const url = './demoPdfMulti.pdf' //Pdf File
+      const url = "/pdf/demoPdfMulti.pdf";
+      const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+
+      // Load a PDFDocument from the existing PDF bytes
+      const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+      // Embed the Helvetica font
+      const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+      // Get the first page of the document
+      const pages = pdfDoc.getPages();
+
+      //Loop multi Page
+      for (let i = 0; i < pages.length; i++) {
+        let page = pages[i];
+
+        // Get the width and height of the first page
+        const { width, height } = page.getSize();
+
+        //Frame SVG
+        const svgPath = "M 0,0 L 120,0 L 120,60 L 0,60 L 0,0";
+
+        //Parameter Position
+        let init_X = 60;
+        let init_Y = height - 530;
+
+        let Title1 = "Print Document";
+        let Name1 = "SomeName Boondee";
+        let Date1 = "29 May 2004";
+        let xBox1 = init_X; //30
+        let yBox1 = init_Y;
+
+        let Title2 = "Document Issue";
+        let Name2 = "SomeName1 BoonSom";
+        let Date2 = "22 May 2004";
+        let xBox2 = xBox1 + 130;
+        let yBox2 = init_Y;
+
+        let Title3 = "Document Verify";
+        let Name3 = "SomeName2 DeeMark";
+        let Date3 = "25 May 2004";
+        let xBox3 = xBox2 + 130;
+        let yBox3 = init_Y;
+
+        // let Title4 = "Document Approve"
+        // let Name4 = "SomeName3 BoNard"
+        // let Date4 = "28 May 2004"
+        // let xBox4 = xBox3 + 130;
+        // let yBox4 = init_Y;
+
+        let posX = new Array(xBox1, xBox2, xBox3);
+        let posY = new Array(yBox1, yBox2, yBox3);
+        let title = new Array(Title1, Title2, Title3);
+        let name = new Array(Name1, Name2, Name3);
+        let date = new Array(Date1, Date2, Date3);
+
+        // Loop Multi Mark
+        for (let i = 0; i < 3; i++) {
+          //Draw Box Fram
+          page.moveTo(posX[i], posY[i]);
+          page.drawSvgPath(svgPath, {
+            borderColor: rgb(1, 0, 0),
+            borderWidth: 1,
+          });
+          // Text Title
+          page.drawText(title[i], {
+            x: posX[i] + 10,
+            y: posY[i] - 15,
+            size: 10,
+            font: helveticaFont,
+            color: rgb(0.95, 0.1, 0.1),
+            //rotate: degrees(-45),
+          });
+          // Text Name
+          page.drawText(name[i], {
+            x: posX[i] + 10,
+            y: posY[i] - 35,
+            size: 10,
+            font: helveticaFont,
+            color: rgb(0.95, 0.1, 0.1),
+            //rotate: degrees(-45),
+          });
+          // Text Date
+          page.drawText(date[i], {
+            x: posX[i] + 10,
+            y: posY[i] - 55,
+            size: 10,
+            font: helveticaFont,
+            color: rgb(0.95, 0.1, 0.1),
+            //rotate: degrees(-45),
+          });
+        }
+      }
+
+      // Serialize the PDFDocument to bytes (a Uint8Array)
+      const pdfBytes = await pdfDoc.save();
+      // Trigger the browser to download the PDF document
+      download(pdfBytes, "priva_Stamp2.pdf", "application/pdf");
+      window.open("priva_Stamp2.pdf", "_blank");
+    }
+    $("#btnHisReviseDoc").on("click", function () {
+      // todo $("html, body").animate(
+      // todo   {
+      // todo     scrollTop: $("#pdfContainer").offset().top,
+      // todo   },
+      // todo   "slow"
+      // todo );
+      modifyPdf();
+    });
+  </script>
+</html>
