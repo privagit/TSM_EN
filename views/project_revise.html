@@ -30,8 +30,8 @@
     <!-- datatables -->
     <link rel="stylesheet" href="/styles/datatables.min.css" type="text/css" />
     <!-- datatables libs print button -->
-    <link rel="stylesheet" href="/jquery/datatables/css/buttons.dataTables.css">
-    <link rel="stylesheet" href="/jquery/datatables/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="/jquery/datatables/css/buttons.dataTables.css" />
+    <link rel="stylesheet" href="/jquery/datatables/css/dataTables.dataTables.css" />
     <!-- select2 -->
     <link rel="stylesheet" href="/jquery/select2/dist/css/select2.min.css" />
     <link rel="stylesheet" href="/jquery/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
@@ -382,6 +382,21 @@
                 <div class="box-divider m-0"></div>
                 <div class="box-body">
                   <div class="row">
+                    <div class="col-12">
+                      <div class="form-group row text-right">
+                        <div class="col p-0">
+                          <button type="button" class="btn btn-fw blue-600 d-none show-edit" id="btnReviseHistory">
+                            <i class="fa fa-history"></i><span class="hidden-xs-down ml-2">Revise History</span>
+                          </button>
+                          <button type="button" class="btn btn-fw dark" id="btnUpload">
+                            <i class="fa fa-upload"></i><span class="hidden-xs-down ml-2">Upload Doc.</span>
+                          </button>
+                          <button type="submit" class="btn btn-fw primary" id="btnReviseSave">
+                            <i class="fa fa-save"></i><span class="hidden-xs-down ml-2">Save</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col">
                       <form role="form" ui-jp="parsley" novalidate>
                         <div class="form-group row">
@@ -402,22 +417,7 @@
                             <textarea class="form-control" placeholder="Revise Detail" id="txtareaReviseDetail"></textarea>
                           </div>
                         </div>
-                        <input type="file" id="fileUpload" class="d-none" name="fileUpload">
-
-                        <div class="form-group row m-t-md">
-                          <div class="col p-0">
-                            <a role="button" href="/reviseHistory" class="btn btn-fw blue-600"
-                              ><i class="fa fa-history"></i><span class="hidden-xs-down ml-2">Revise History</span></a
-                            >
-                            <button type="button" class="btn btn-fw dark" id="btnUpload">
-
-                              <i class="fa fa-upload"></i><span class="hidden-xs-down ml-2" >Upload Doc.</span>
-                            </button>
-                            <button type="submit" class="btn btn-fw primary">
-                              <i class="fa fa-save"></i><span class="hidden-xs-down ml-2">Save</span>
-                            </button>
-                          </div>
-                        </div>
+                        <input type="file" id="fileUpload" class="d-none" name="fileUpload" />
                       </form>
                     </div>
 
@@ -435,29 +435,53 @@
                             readonly
                           />
                           <div class="input-group-btn">
-                            <button class="btn btn-default black btnTestSign" type="button" swal-title="ISSUED BY">sign</button>
+                            <button
+                              class="btn btn-default black btn-swal-sign"
+                              type="button"
+                              swal-title="ISSUED BY"
+                              swal-target="showIssue"
+                              id="btnSignIssue"
+                            >
+                              sign
+                            </button>
                           </div>
                         </div>
                       </div>
                       <!-- todo แสดงหลังจาก Sign Issue -->
-                      <div class="form-group row">
+                      <div class="form-group row d-none show-edit">
                         <label for="showCheck" class="col-sm-3 form-control-label">Checked by</label>
                         <div class="col-sm-9 input-group">
                           <input type="text" class="form-control text-center" id="showCheck" placeholder="" autocomplete="off" readonly />
                           <div class="input-group-btn">
-                            <button class="btn btn-default black btnTestSign" type="button" swal-title="CHECKED BY">sign</button>
+                            <button
+                              class="btn btn-default black btn-swal-sign"
+                              type="button"
+                              swal-title="CHECKED BY"
+                              swal-target="showCheck"
+                              id="btnSignCheck"
+                            >
+                              sign
+                            </button>
                           </div>
                         </div>
                       </div>
                       <!-- todo -->
 
                       <!-- todo แสดงหลังจาก Sign Check -->
-                      <div class="form-group row">
+                      <div class="form-group row d-none show-edit">
                         <label for="showApprove" class="col-sm-3 form-control-label">Approved by</label>
                         <div class="col-sm-9 input-group">
                           <input type="text" class="form-control text-center" id="showApprove" placeholder="" autocomplete="off" readonly />
                           <div class="input-group-btn">
-                            <button class="btn btn-default black btnTestSign" type="button" swal-title="APPROVED BY">sign</button>
+                            <button
+                              class="btn btn-default black btn-swal-sign"
+                              type="button"
+                              swal-title="APPROVED BY"
+                              swal-target="showApprove"
+                              id="btnSignApprove"
+                            >
+                              sign
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -486,7 +510,7 @@
 
   <!-- datatables -->
   <script src="/jquery/datatables/media/js/jquery.dataTables.min.js"></script>
-  <script src="/js/testdatatable.js"></script>
+  <!-- <script src="/js/testdatatable.js"></script> -->
 
   <!-- datatables libs print button -->
   <script src="/jquery/datatables/js/dataTables.js"></script>
@@ -497,14 +521,16 @@
   <script src="/jquery/datatables/js/vfs_fonts.js"></script>
   <script src="/jquery/datatables/js/buttons.html5.min.js"></script>
   <script src="/jquery/datatables/js/buttons.print.min.js"></script>
-  
+
   <!-- select2 -->
   <script src="/jquery/select2/dist/js/select2.min.js"></script>
-  <script src="/js/testSelect2.js"></script>
+  <!-- <script src="/js/testSelect2.js"></script> -->
 
   <!-- sweetalert2 -->
   <script src="/jquery/swalalert2/swalalert2.js"></script>
 
-  <script src="/js/testSwalalert2.js"></script>
-
+  <!-- <script src="/js/testSwalalert2.js"></script> -->
+  <!-- scripts -->
+  <script src="/scripts_page/function.js"></script>
+  <script src="/scripts_page/projectRevise.js"></script>
 </html>

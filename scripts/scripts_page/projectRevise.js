@@ -1,8 +1,17 @@
 $(document).ready(function () {
+  // ************************************** get data
   $(".show-user-name").html("NameTest1");
   $("#userPosition").html("Admin");
-  // * fill table
-  let tbPJlist = $("#tablePJmaster").DataTable({
+
+  const default_data = getQueryParams();
+  const { CustomerID, CustomerName, PJName, RefNo } = default_data;
+  console.log(default_data);
+  $("#inputCustomer").val(CustomerName);
+  $("#inputPJname").val(PJName);
+  $("#inputRefNo").val(RefNo);
+
+  // ************************************** fill table
+  let tbPJrevise = $("#tablePJrevise").DataTable({
     bDestroy: true,
     searching: true,
     paging: false,
@@ -42,9 +51,6 @@ $(document).ready(function () {
   fillDefaultSelect("selectCustomer", defaultCustomer);
   select2Single("selectCustomer");
 
-  fillDefaultSelect("selectEmail", defaultEmail);
-  select2MultipleAutoAdd("selectEmail");
-
   // ************************************** sweetalert
 
   $(".btn-swal-sign").unbind();
@@ -53,26 +59,26 @@ $(document).ready(function () {
     swalalertSign(id);
   });
 
-  // ************************************** add project
-  $("#btnPJadd").unbind();
-  $("#btnPJadd").on("click", function () {
+  // ************************************** add project revise
+  $("#btnPJReviseAdd").unbind();
+  $("#btnPJReviseAdd").on("click", function () {
     $(".show-edit").addClass("d-none");
-    $("#modalPJmanagement").removeClass("d-none");
-    $("#tablePJmaster tbody tr").removeClass("selected");
+    $("#modalPJRevisemanagement").removeClass("d-none");
+    $("#tablePJrevise tbody tr").removeClass("selected");
     // clear input
-    $("#modalPJmanagement input, #modalPJmanagement select").val("");
-    scrollPageTo("modalPJmanagement");
+    $("#modalPJRevisemanagement input, #modalPJRevisemanagement select").val("");
+    scrollPageTo("modalPJRevisemanagement");
 
-    $("#btnPJsave").unbind();
-    $("#btnPJsave").on("click", function () {
+    $("#btnReviseSave").unbind();
+    $("#btnReviseSave").on("click", function () {
       // todo ajax
-      tbPJlist.ajax.reload(null, false);
+      tbPJrevise.ajax.reload(null, false);
     });
   });
 
-  // ************************************** revise
-  $("#btnRevise").unbind();
-  $("#btnRevise").on("click", function () {
+  // ************************************** revise history
+  $("#btnReviseHistory").unbind();
+  $("#btnReviseHistory").on("click", function () {
     const data = {
       CustomerID: 1,
       CustomerName: "John Doe",
@@ -82,45 +88,58 @@ $(document).ready(function () {
 
     // แปลงข้อมูลเป็น query string
     const queryString = new URLSearchParams(data).toString();
-    window.location.href = `/projectRevise?${queryString}`;
+    window.location.href = `/reviseHistory?${queryString}`;
+  });
+
+  $("#btnPJReviseDoc").unbind();
+  $("#btnPJReviseDoc").on("click", function () {
+    // todo ajax
+  });
+
+  // ************************************** upload file
+  $("#btnUpload").unbind();
+  $("#btnUpload").on("click", function () {
+    $("#fileUpload").click();
+  });
+
+  $("#fileUpload").on("change", function () {
+    // todo ajax
   });
 
   // ************************************** click table
-  $("#tablePJmaster tbody").on("click", "tr", function () {
-    $("#modalPJmanagement").addClass("d-none");
+  $("#tablePJrevise tbody").on("click", "tr", function () {
+    $("#modalPJRevisemanagement").addClass("d-none");
     if ($(this).hasClass("selected")) {
       $(this).removeClass("selected");
-      $("#btnPJedit, #btnPJdel").addClass("d-none");
+      $("#btnPJReviseEdit, #btnPJReviseDel,#btnPJReviseDoc").addClass("d-none");
     } else {
-      $("#tablePJmaster tbody").find("tr.selected").removeClass("selected");
+      $("#tablePJrevise tbody").find("tr.selected").removeClass("selected");
       $(this).addClass("selected");
-      $("#btnPJedit, #btnPJdel").removeClass("d-none");
-      let data = tbPJlist.row(this).data();
+      $("#btnPJReviseEdit, #btnPJReviseDel,#btnPJReviseDoc").removeClass("d-none");
+      let data = tbPJrevise.row(this).data();
 
       // ************************************** edit project
-      $("#btnPJedit").unbind();
-      $("#btnPJedit").on("click", function () {
-        $("#modalPJmanagement,.show-edit").removeClass("d-none");
-        scrollPageTo("modalPJmanagement");
+      $("#btnPJReviseEdit").unbind();
+      $("#btnPJReviseEdit").on("click", function () {
+        $("#modalPJRevisemanagement,.show-edit").removeClass("d-none");
+        scrollPageTo("modalPJRevisemanagement");
         // fill input
         $("#selectCustomer")
           .val(data.customer || "Customer2")
           .trigger("change");
-        $("#inputPJname").val("test PJ Name");
-        $("#inputPJcode").val("test PJ Ref No.");
+        $("#inputPartname").val("test Part Name");
+        $("#inputPartcode").val("test PJ Ref No.");
+        $("#txtareaReviseDetail").val("Detail");
         $("#showIssue").val("test 12/6/2567");
         $("#showCheck").val("test 12/6/2567");
         $("#showApprove").val("test 12/6/2567");
-        $("#showApproveSOP").val("test 12/6/2567");
-        $("#selectEmail").val("").trigger("change");
         $().val();
 
-        $("#btnPJsave").unbind();
-        $("#btnPJsave").on("click", function () {
+        $("#btnReviseSave").unbind();
+        $("#btnReviseSave").on("click", function () {
           console.log("ssssss");
           // todo ajax
-          tbPJlist.ajax.reload(null, false);
-
+          tbPJrevise.ajax.reload(null, false);
         });
 
         // ************************************** send email
@@ -132,9 +151,9 @@ $(document).ready(function () {
       });
 
       // ************************************** delete project
-      $("#btnPJdel").unbind();
-      $("#btnPJdel").on("click", function () {
-        $("#modalPJmanagement").addClass("d-none");
+      $("#btnPJReviseDel").unbind();
+      $("#btnPJReviseDel").on("click", function () {
+        $("#modalPJRevisemanagement").addClass("d-none");
         Swal.fire({
           title: "ยืนยันการลบข้อมูล",
           text: "การกระทำนี้ไม่สามารถย้อนกลับได้",
