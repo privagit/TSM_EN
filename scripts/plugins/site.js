@@ -1,6 +1,3 @@
-(function ($) {
-  "use strict";
-  
-    alert('abc');
-
+(function ($) { "use strict";
+   alert('abc');
 })(jQuery);

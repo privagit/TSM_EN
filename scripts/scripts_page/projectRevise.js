@@ -4,7 +4,12 @@ $(document).ready(function () {
   $("#userPosition").html("Admin");
 
   const default_data = getQueryParams();
-  const { CustomerID, CustomerName, PJName, RefNo } = default_data;
+  const {
+    CustomerID,
+    CustomerName,
+    PJName,
+    RefNo
+  } = default_data;
   console.log(default_data);
   $("#inputCustomer").val(CustomerName);
   $("#inputPJname").val(PJName);
@@ -36,13 +41,11 @@ $(document).ready(function () {
     layout: {
       topStart: {
         // buttons: ["copy", "csv", "excel", "pdf", "print"],
-        buttons: [
-          {
-            extend: "csvHtml5",
-            text: "Export CSV",
-            className: "btn dark", // Add custom class here
-          },
-        ],
+        buttons: [{
+          extend: "csvHtml5",
+          text: "Export CSV",
+          className: "btn dark", // Add custom class here
+        },],
       },
     },
   });
@@ -66,7 +69,9 @@ $(document).ready(function () {
     $("#modalPJRevisemanagement").removeClass("d-none");
     $("#tablePJrevise tbody tr").removeClass("selected");
     // clear input
-    $("#modalPJRevisemanagement input, #modalPJRevisemanagement select").val("");
+    $("#modalPJRevisemanagement input, #modalPJRevisemanagement select").val(
+      ""
+    );
     scrollPageTo("modalPJRevisemanagement");
 
     $("#btnReviseSave").unbind();
@@ -115,7 +120,9 @@ $(document).ready(function () {
     } else {
       $("#tablePJrevise tbody").find("tr.selected").removeClass("selected");
       $(this).addClass("selected");
-      $("#btnPJReviseEdit, #btnPJReviseDel,#btnPJReviseDoc").removeClass("d-none");
+      $("#btnPJReviseEdit, #btnPJReviseDel,#btnPJReviseDoc").removeClass(
+        "d-none"
+      );
       let data = tbPJrevise.row(this).data();
 
       // ************************************** edit project

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  
   $(".show-user-name").html("NameTest1");
   $("#userPosition").html("Admin");
   // * fill table
@@ -7,7 +8,6 @@ $(document).ready(function () {
     searching: true,
     paging: false,
     info: false,
-    // ordering: false,
     scrollCollapse: true,
     scrollX: true,
     scrollY: "40vh",
@@ -59,7 +59,7 @@ $(document).ready(function () {
     $(".show-edit").addClass("d-none");
     $("#modalPJmanagement").removeClass("d-none");
     $("#tablePJmaster tbody tr").removeClass("selected");
-    // clear input
+  
     $("#modalPJmanagement input, #modalPJmanagement select").val("");
     scrollPageTo("modalPJmanagement");
 

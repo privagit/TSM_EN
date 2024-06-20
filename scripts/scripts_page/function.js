@@ -35,7 +35,7 @@ function getQueryParams() {
   const params = new URLSearchParams(window.location.search);
   const data = {};
   for (const [key, value] of params.entries()) {
-      data[key] = value;
+    data[key] = value;
   }
   return data;
 }
@@ -162,4 +162,10 @@ function swalalertSign(btnID) {
       $(`#${targetShowSign}`).val(signBy);
     }
   });
+}
+
+function collapseAlert() { //todo 
+  $("#countPJissue").text("12")
+  $("#countPPCissue").text("12")
+  $("#countECNissue").text("12")
 }
